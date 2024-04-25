@@ -62,7 +62,7 @@ def list_fingers_open(landmark_list: list, subtractor: int=2, hand_side: str=Non
     if landmark_list:
         for point in finger_points:
             if point == 4:
-                if re.search(r"[Rr]ight.*", str(hand_side)):
+                if re.search(r".*[Rr]ight.*", str(hand_side)):
                     # landmark_list[point][1] -> width | landmark_list[point][2] -> height 
                     list_fingers_open.append(1 if landmark_list[point][1] < landmark_list[point-subtractor+1][1] else 0)
                 else:
@@ -90,22 +90,20 @@ def main():
         
         # Line Threshold
         cv2.line(frame, (0, GESTURE_TRESHOLD), (WIDTH_CAM, GESTURE_TRESHOLD), (255,0,0), 3)
-        
         frame_flipped=cv2.flip(frame, 1)
         landmark_list, detector, wrist_position, hand_side=detect_hand(image=frame_flipped, draw_landmarks=True)
         list_point=list_fingers_open(landmark_list=landmark_list, subtractor=2, hand_side=hand_side)
-
+        
         if wrist_position and status_delay==False and wrist_position[1] < GESTURE_TRESHOLD:
             print(list_point)
+            status_delay=True
             if list_point == [0,0,1,1,1]:
                 print("|||>> Last three fingers opened | RIGHT BUTTON PRESSED")
                 pyautogui.press("right")
-                status_delay=True
             
             if list_point == [1,1,1,0,0]:
                 print("|||>> First three fingers opened | LEFT BUTTON PRESSED")
                 pyautogui.press("left")
-                status_delay=True
         
         if status_delay:
             delay_counter += 1 
