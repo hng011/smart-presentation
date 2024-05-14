@@ -57,7 +57,7 @@ def main():
         # Window stick on top
         cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_TOPMOST, 1)
 
-        if cv2.waitKey(1)==ord("q"): 
+        if cv2.waitKey(1)==ord("q") or cv2.getWindowProperty(WINDOW_NAME, cv2.WND_PROP_VISIBLE) < 1: 
             cap.release()
             cv2.destroyAllWindows()
             break ## pressing q for exit
