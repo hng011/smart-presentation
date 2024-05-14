@@ -29,7 +29,7 @@ def detect_hand(image: np.ndarray=None, draw_landmarks: bool=False, show_score: 
 
                 position.append([index, cx, cy])
                 if draw_landmarks:
-                    cv2.rectangle(image, (cx, cy), (cx+10, cy+15), (255,0,255), 25)
+                    cv2.rectangle(image, (cx, cy), (cx+5, cy+10), (255,0,255), 5)
                     mp_draw.draw_landmarks(image, hand_marks, mp_hands.HAND_CONNECTIONS) # Draw landmarks on frame
                     
                 if i==0: #Detecting wrist
@@ -37,12 +37,12 @@ def detect_hand(image: np.ndarray=None, draw_landmarks: bool=False, show_score: 
                     cv2.putText(image, 
                                 f"{hand_side} hand", 
                                 (cx-50, cy+50), 
-                                cv2.FONT_HERSHEY_PLAIN, 2, (255,0,0), 3)
+                                cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 2)
                     # Confident score display
                     cv2.putText(image, 
                                 f"{cfd_score:.2f}%", 
-                                (cx-25, cy+90), 
-                                cv2.FONT_HERSHEY_PLAIN, 2, (255,0,0), 3)
+                                (cx-25, cy+70), 
+                                cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 2)
                                             
         if show_score:
             print(f"{hand_side} hand detected | score {cfd_score}")
