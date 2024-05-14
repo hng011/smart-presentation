@@ -2,7 +2,7 @@
 
 """
     Project PI Hans
-    These all are libraries needed to
+    These all are the libraries needed to
     create the hand landmark detector
 """
 

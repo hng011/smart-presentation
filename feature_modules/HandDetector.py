@@ -2,7 +2,6 @@ from feature_modules.Detector import HandDetector
 from feature_modules import np, cv2 
 
 """
-    Project PI Hans
     Instantiating the HandDetector class
 """
 
