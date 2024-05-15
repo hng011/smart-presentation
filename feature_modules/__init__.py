@@ -1,5 +1,3 @@
-
-
 """
     Project PI Hans
     These all are the libraries needed to
@@ -8,4 +6,4 @@
 
 import cv2
 import numpy as np
-import mediapipe as mp
+import mediapipe as mp  
