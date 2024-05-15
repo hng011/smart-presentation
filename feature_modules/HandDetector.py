@@ -6,7 +6,7 @@ from feature_modules import np, cv2
 """
 
 hand_detector = HandDetector(max_num_hands=1, 
-                             min_detection_confidence=0.8)
+                             min_detection_confidence=0.9)
 mp_hands = hand_detector.mphands
 mp_draw = hand_detector.draw
 hands = hand_detector.hands

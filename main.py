@@ -27,7 +27,7 @@ def main():
                                        subtractor=2, 
                                        hand_side=hand_side)
         print(list_point)
-        
+        print(hand_side)
         if (wrist_position and status_delay==False) and wrist_position[1] < G_THRESHOLD:
             btn_log="None"
             if list_point == [0,0,1,1,1]:
