@@ -1,6 +1,5 @@
 import cv2
 import pyautogui
-import win32gui
 from feature_modules.HandDetector import *
 from feature_modules.ListOpenedFingers import *
 
@@ -48,8 +47,13 @@ def main():
             delay_counter=0
             status_delay=False
 
-        fs_wnd=win32gui.GetWindowText(win32gui.GetForegroundWindow())
-        fs_wnd=fs_wnd.replace(" ", "").split("-")[-1]
+        try:
+            import win32gui
+            fs_wnd=win32gui.GetWindowText(win32gui.GetForegroundWindow())
+            fs_wnd=fs_wnd.replace(" ", "").split("-")[-1]
+        except:
+            fs_wnd=None
+            
         cv2.putText(detector, 
                     f"current window: {fs_wnd}", 
                     (5, HEIGHT_CAM), 
