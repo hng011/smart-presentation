@@ -2,3 +2,4 @@ opencv-python==4.9.0.80
 numpy==1.26.4
 PyAutoGUI==0.9.54
 mediapipe==0.10.11
+pyinstaller==6.6.0
