@@ -8,7 +8,7 @@ class Camera:
     def __init__(self, name: str="webcam",
                  box_size: tuple=None, # W x H
                  cam_type: int=0,
-                 detector_delay: int=20,
+                 detector_delay: int=25,
                  flip_cam_h: bool=True):
     
         self.name = name
@@ -21,20 +21,22 @@ class Camera:
         
         cap = cv2.VideoCapture(self.cam_type)
         if self.box_size:
-             WIDTH_CAM = round(self.box_size[0])
-             HEIGHT_CAM = round(self.box_size[1])
-        else:            
-            WIDTH_CAM = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-            HEIGHT_CAM = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+             cap.set(3 ,round(self.box_size[0]))
+             cap.set(4 ,round(self.box_size[1]))
+                         
+        WIDTH_CAM = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        HEIGHT_CAM = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        
         
         status_delay = False
         delay_counter = 0
         task_log = None
-        TH = (HEIGHT_CAM // 2) + 30
+        TH = (HEIGHT_CAM // 2) - 10
         
         # START CAM LOOP
         while cap.isOpened():
             s, frame = cap.read()
+            print(WIDTH_CAM, HEIGHT_CAM)
             
             cv2.line(frame, (0, TH),
                      (WIDTH_CAM, TH),
