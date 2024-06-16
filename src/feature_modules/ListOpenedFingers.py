@@ -1,8 +1,8 @@
 def list_opened_fingers(landmark_list: list, 
-                        subtractor: int=2, 
-                        hand_side: str=None) -> list:
-    list_fingers_open=[]
-    finger_points=[4,8,12,16,20]
+                        subtractor: int = 2, 
+                        hand_side: str = None) -> list:
+    list_fingers_open = []
+    finger_points = [4,8,12,16,20]
 
     if landmark_list:
         for point in finger_points:

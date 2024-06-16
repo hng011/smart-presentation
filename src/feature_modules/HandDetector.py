@@ -14,23 +14,23 @@ hands = hand_detector.hands
 def detect_hand(image: np.ndarray=None, 
                 draw_landmarks: bool=False, 
                 show_score: bool=False) -> tuple:
-    h, w, _=image.shape
-    res=hands.process(cv2.cvtColor(image, 
+    h, w, _ = image.shape
+    res = hands.process(cv2.cvtColor(image, 
                                    cv2.COLOR_BGR2RGB))
-    multi_hl=res.multi_hand_landmarks
-    multi_hn=res.multi_handedness
-    position=[]
-    wrist_position=()
-    hand_side=None
+    multi_hl = res.multi_hand_landmarks
+    multi_hn = res.multi_handedness
+    position = []
+    wrist_position = ()
+    hand_side = None
 
     if multi_hl:
         for data in multi_hn:
-            hand_side=data.classification[0].label
-            cfd_score=data.classification[0].score
+            hand_side = data.classification[0].label
+            cfd_score = data.classification[0].score
         for hand_marks in multi_hl:
             for i, lm in enumerate(hand_marks.landmark):
                 # Converting from ratio to pixel?
-                index, cx, cy=i, int(lm.x*w), int(lm.y*h) 
+                index, cx, cy = i, int(lm.x*w), int(lm.y*h) 
                 
                 position.append([index, cx, cy])
                 if draw_landmarks:
@@ -43,7 +43,7 @@ def detect_hand(image: np.ndarray=None,
                                            mp_hands.HAND_CONNECTIONS) 
                     
                 #Detecting wrist
-                if i==0: 
+                if i == 0: 
                     wrist_position = (cx, cy)
                     cv2.putText(image, 
                                 f"{hand_side} hand", 
