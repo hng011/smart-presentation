@@ -26,7 +26,6 @@ class Camera:
         WIDTH_CAM = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         HEIGHT_CAM = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         
-        
         status_delay = False
         delay_counter = 0
         task_log = None
@@ -83,32 +82,24 @@ class Camera:
                 
             cv2.putText(frame,
                         f"Current Window: {fs_win_rep}",
-                        (5, TH+30),
-                        cv2.FONT_HERSHEY_PLAIN, 1,
+                        (5, TH+30), cv2.FONT_HERSHEY_PLAIN, 1,
                         (0,255,0), 2)
             
             # Log Curr Window
             print("curr window:",fs_win)
                     
-            cv2.putText(frame,
-                f"Task Log: {task_log}",
-                (5, TH+50),
-                cv2.FONT_HERSHEY_PLAIN, 1,
-                (0,255,0), 2)
+            cv2.putText(frame, f"Task Log: {task_log}", 
+                        (5, TH+50),
+                        cv2.FONT_HERSHEY_PLAIN, 1, (0,255,0), 2)
             
-            try:
-                cv2.setWindowProperty(self.name, 
-                                      cv2.WND_PROP_TOPMOST, 1)
-            except:
-                print("Something went wrong, can't make the window stick on top :(")
+            try: cv2.setWindowProperty(self.name, cv2.WND_PROP_TOPMOST, 1)
+            except: print("Something went wrong, can't make the window stick on top :(")
 
             # Start cam
             cv2.imshow(self.name, frame)
-            
             # exit
             if cv2.waitKey(1)==ord("q") or cv2.getWindowProperty(self.name, cv2.WND_PROP_VISIBLE) < 1: 
-                cap.release(); cv2.destroyAllWindows()
-                break ## pressing q for exit
+                cap.release(); cv2.destroyAllWindows(); break ## pressing q for exit
             
 if __name__ == "__main__":
     cam = Camera()

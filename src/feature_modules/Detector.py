@@ -8,5 +8,4 @@ class HandDetector:
         self.draw = mp.solutions.drawing_utils
         self.hands = self.mphands.Hands(
                         max_num_hands=max_num_hands,
-                        min_detection_confidence=min_detection_confidence
-                    )
+                        min_detection_confidence=min_detection_confidence)

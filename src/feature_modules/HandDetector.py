@@ -41,7 +41,7 @@ def detect_hand(image: np.ndarray=None,
                                            hand_marks, 
                                            # Draw landmarks on frame
                                            mp_hands.HAND_CONNECTIONS) 
-                    
+
                 #Detecting wrist
                 if i == 0: 
                     wrist_position = (cx, cy)
@@ -57,9 +57,6 @@ def detect_hand(image: np.ndarray=None,
                                 cv2.FONT_HERSHEY_PLAIN, 1, 
                                 (255,0,0), 2)
                                             
-        if show_score:
-            print(f"{hand_side} hand detected | score {cfd_score}")
-    else:
-        print("No Hand Detected")
-    
+        if show_score: print(f"{hand_side} hand detected | score {cfd_score}")
+    else: print("No Hand Detected")
     return position, image, wrist_position, hand_side

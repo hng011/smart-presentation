@@ -1,7 +1,8 @@
 """
-    Project PI Hans
-    These all are the libraries needed to
-    create the hand landmark detector
+    Project PI Hans - 50421591
+    Libraries that are 
+    required to develop 
+    a hand landmark detector
 """
 
 import cv2
