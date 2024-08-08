@@ -1,3 +1,6 @@
+## Smart Presentation Feature
+An AI program to control presentation slides using a hand gestures. built with MediaPipe and OpenCV
+
 ## Installation
 
 1. Clone the repo
